@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>Album</title>
+  <style>
+    #gallery { display: flex; flex-wrap: wrap; gap: 10px; }
+    video { height: 300px; }
+    img { height: 300px; }
+  </style>
+</head>
+<body>
+  <div id="gallery"></div>
+  <script>
+    fetch(`https://api.github.com/repos/1v7/web/contents/docs/p?ref=main`)
+      .then(res => res.json())
+      .then(files => {
+        const gallery = document.getElementById("gallery");
+        files.forEach(file => {
+
+            if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
+              
+
+            const link = document.createElement("a");
+            link.href = "p/" + file.name;
+            link.target = "_blank";   
+
+            const img = document.createElement("img");
+            img.src = "p/" + file.name;
+
+            link.appendChild(img);
+            gallery.appendChild(link);
+
+
+              
+          } else if (file.name.match(/\.(mp4|mov)$/i)) {
+            const video = document.createElement("video");
+            video.src = "p/"+file.name;
+            video.controls = true;
+            video.preload = "metadata";
+            gallery.appendChild(video);
+          }
+
+          
+        });
+      });
+  </script>
+</body>
+</html>

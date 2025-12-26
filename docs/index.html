@@ -17,10 +17,7 @@
       .then(files => {
         const gallery = document.getElementById("gallery");
         files.forEach(file => {
-
             if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
-              
-
             const link = document.createElement("a");
             link.href = "p/" + file.name;
             link.target = "_blank";   
@@ -30,9 +27,6 @@
 
             link.appendChild(img);
             gallery.appendChild(link);
-
-
-              
           } else if (file.name.match(/\.(mp4|mov)$/i)) {
             const video = document.createElement("video");
             video.src = "p/"+file.name;

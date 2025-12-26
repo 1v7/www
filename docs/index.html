@@ -12,7 +12,7 @@
 <body>
   <div id="gallery"></div>
   <script>
-    fetch(`https://api.github.com/repos/1v7/web/contents/docs/p?ref=main`)
+    fetch(`https://api.github.com/repos/1v7/www/contents/docs/p?ref=main`)
       .then(res => res.json())
       .then(files => {
         const gallery = document.getElementById("gallery");
